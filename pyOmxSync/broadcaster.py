@@ -20,8 +20,8 @@ class Broadcaster:
         self.destroy()
 
     def setup(self):
-        host = options['host'] if 'host' in self.options else DEFAULT_HOST
-        port = options['port'] if 'port' in self.options else DEFAULT_PORT
+        host = self.options['host'] if 'host' in self.options else DEFAULT_HOST
+        port = self.options['port'] if 'port' in self.options else DEFAULT_PORT
 
         # create socket connections
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, 0)
