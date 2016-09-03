@@ -1,0 +1,1 @@
+omxplayer-wrapper==0.0.2 # see install instructions at https://github.com/willprice/python-omxplayer-wrapper
