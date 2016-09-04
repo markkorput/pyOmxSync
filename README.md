@@ -65,7 +65,7 @@ broadcaster = Broadcaster(player, {'port': 3001}) # default: 1666
 Use specific remote IP-adresses (instead of broadcasting)
 
 ```python
-receiver = Receiver(player, {'host': '192.168.2.5}) # default: '0.0.0.0'
+receiver = Receiver(player, {'host': '192.168.2.5'}) # default: '0.0.0.0'
 broadcaster = Broadcaster(player, {'port': '192.168.2.6'}) # default: '255.255.255.255'
 ```
 
@@ -80,7 +80,7 @@ broadcaster = Broadcaster(player, {'interval': '5.0'}) # default: 1.0
 Tolerance is the maximum amount of time that the slave is allowed to be ahead of behind on the master before syncing measures will be taken (specified in seconds).
 
 ```python
-receiver = Receiver(player, {'tolerance': 0.1}) # default: '0.05'
+receiver = Receiver(player, {'tolerance': 0.1}) # default: 0.05
 ```
 
 Grace time is the amount of time after a sync-action (pause or jump) that the slave will wait before performing any new syncing actions (specified in seconds).
