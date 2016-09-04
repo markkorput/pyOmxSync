@@ -1,6 +1,7 @@
 # omxsync
 python module to sync playback of several omxplayer instances
 
+[![Build Status](https://travis-ci.org/markkorput/pyOmxSync.svg?branch=master)](https://travis-ci.org/markkorput/pyOmxSync)
 [![Code Climate](https://codeclimate.com/github/markkorput/pyOmxSync/badges/gpa.svg)](https://codeclimate.com/github/markkorput/pyOmxSync)
 
 ## Summary
