@@ -58,4 +58,4 @@ class Broadcaster:
             print(err)
 
         if self.verbose:
-            print 'broadcast position: ' + str(p) + ', with filename: ' + self.player.get_filename()
+            print('broadcast position: ' + str(p) + ', with filename: ' + self.player.get_filename())

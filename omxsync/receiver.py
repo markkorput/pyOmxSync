@@ -80,11 +80,11 @@ class Receiver:
         self.deviation = self.received_position - local_pos
 
         if self.verbose:
-            print 'PositionReceiver got: %s @ %.2f (deviation: %.2f)' % (self.received_filename, self.received_position, self.deviation)
+            print('PositionReceiver got: %s @ %.2f (deviation: %.2f)' % (self.received_filename, self.received_position, self.deviation))
 
         # check file; if master is playing a different file, then there is no use in time-syncing
         if not os.path.basename(self.received_filename) == os.path.basename(self.player.get_filename()):
-            print 'PositionReceiver got different file ('+os.path.basename(self.received_filename)+') from own current file: '+os.path.basename(self.player.get_filename())
+            print('PositionReceiver got different file ('+os.path.basename(self.received_filename)+') from own current file: '+os.path.basename(self.player.get_filename()))
             # todo; try to load same file?
             return
 
@@ -93,7 +93,7 @@ class Receiver:
         self.median_deviation = self._calculate_median(list(self.deviations))
 
         if self.verbose:
-            print 'PositionReceiver.median_deviation: ' + str(self.median_deviation)
+            print('PositionReceiver.median_deviation: ' + str(self.median_deviation))
 
         # still at start of video, don't sync
         if self.received_position <= self.grace_time: # or self.player.position() <= self.grace_time:

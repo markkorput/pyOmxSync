@@ -1,10 +1,12 @@
 # omxsync
 python module to sync playback of several omxplayer instances
 
+[![Build Status](https://travis-ci.org/markkorput/pyOmxSync.svg?branch=master)](https://travis-ci.org/markkorput/pyOmxSync)
+[![Code Climate](https://codeclimate.com/github/markkorput/pyOmxSync/badges/gpa.svg)](https://codeclimate.com/github/markkorput/pyOmxSync)
 
 ## Summary
 
-A small python module that syncs omxplayers over the network using sockets and a master/slave configuration. The syncing logic was initialy inspired by the [omxplayer-sync](https://github.com/turingmachine/omxplayer-sync) implementation, but designed to be easily implementable in your python project (and not as a stand-alone runnable script). It uses [python-omxplayer-wrapper](https://github.com/willprice/python-omxplayer-wrapper) to interface with the OMXPlayer process.
+A tiny python module that syncs omxplayers over the network using sockets and a master/slave configuration. The syncing logic was initialy inspired by the [omxplayer-sync](https://github.com/turingmachine/omxplayer-sync) implementation, but designed to be easily implementable in your python project (and not as a stand-alone runnable script). It uses [python-omxplayer-wrapper](https://github.com/willprice/python-omxplayer-wrapper) to interface with the OMXPlayer process.
 
 
 ## Install
