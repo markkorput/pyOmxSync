@@ -1,20 +1,26 @@
 import socket
 from time import time
+import logging
+logging.basicConfig(level=logging.INFO)
 
 DEFAULT_PORT = 1666
 DEFAULT_HOST = '255.255.255.255'
 DEFAULT_INTERVAL = 1.0 # seconds
+
 
 class Broadcaster:
     def __init__(self, omxplayer, options = {}):
         # config
         self.player = omxplayer
         self.options = options
-        self.verbose = options['verbose'] if 'verbose' in options else False
         self.interval = options['interval'] if 'interval' in options else DEFAULT_INTERVAL
         # attributes
         self.socket = None
         self.next_broadcast_time = 0
+
+        self.logger = logging.getLogger(__name__)
+        if 'verbose' in options and options['verbose']:
+            self.logger.setLevel(logging.DEBUG)
 
     def __del__(self):
         self.destroy()
@@ -31,7 +37,7 @@ class Broadcaster:
         try:
             self.socket.connect((host, port))
         except:
-            print("PositionBroadcaster: network is unreachable")
+            self.logger.error('socket.connect failed; network is unreachable')
 
     def destroy(self):
         if self.socket:
@@ -58,8 +64,6 @@ class Broadcaster:
         try:
             self.socket.send(("%s%%%s" % (str(p),  filename)).encode('utf-8'))
         except socket.error as err:
-            print("PositionBroadcaster: socket.send failed:")
-            print(err)
+            self.logger.error("socket.send failed:\n{0}".format(err))
 
-        if self.verbose:
-            print('broadcast position: ' + str(p) + ', with filename: ' + filename)
+        self.logger.debug('broadcast position: {0} with filename: {1}'.format(p, filename))
