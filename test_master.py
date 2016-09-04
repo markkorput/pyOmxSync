@@ -4,7 +4,7 @@ try:
 except ImportError:
     print("\n!! Could not import OMXPlayer, see https://github.com/willprice/python-omxplayer-wrapper for install instructions !!\n")
 
-from pyOmxSync.broadcaster import Broadcaster
+from omxsync import Broadcaster
 import sys
 
 if len(sys.argv) < 2:
