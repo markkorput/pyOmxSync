@@ -55,27 +55,29 @@ while player.playback_status() != "Stopped":
 
 ## Advanced Options
 
-Use a custom network port (the broadcaster and receiver must use the same port)
+#### Use a custom network port (the broadcaster and receiver must use the same port)
 
 ```python
 receiver = Receiver(player, {'port': 3001}) # default: 1666
 broadcaster = Broadcaster(player, {'port': 3001}) # default: 1666
 ```
 
-Use specific remote IP-adresses (instead of broadcasting)
+#### Use specific remote IP-adresses (instead of broadcasting). 
+
+Using '0.0.0.0' for the receiver will accept both broadcasted data and data send specifically to the receiver. Using '255.255.255.255' on the broadcaster will broadcast the data Alternatively you could send to a specific machine by using the slave's IP address
 
 ```python
-receiver = Receiver(player, {'host': '192.168.2.5'}) # default: '0.0.0.0'
-broadcaster = Broadcaster(player, {'port': '192.168.2.6'}) # default: '255.255.255.255'
+receiver = Receiver(player, {'host': '127.0.0.1'}) # default: '0.0.0.0'
+broadcaster = Broadcaster(player, {'port': '192.168.2.5'}) # default: '255.255.255.255'
 ```
 
-Specify a custom broadcast interval (in seconds)
+#### Specify a custom broadcast interval (in seconds)
 
 ```python
 broadcaster = Broadcaster(player, {'interval': '5.0'}) # default: 1.0
 ```
 
-### Specify custom slave-syncing parameters
+### Custom slave-syncing parameters
 
 Tolerance is the maximum amount of time that the slave is allowed to be ahead of behind on the master before syncing measures will be taken (specified in seconds).
 

@@ -29,6 +29,8 @@ try:
     player.stop()
 
     print("Exit")
+except KeyboardInterrupt:
+    player.quit()
 except Exception as err:
     print("An error occured:")
     print(err)
