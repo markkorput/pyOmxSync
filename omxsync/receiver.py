@@ -21,6 +21,7 @@ class Receiver:
         self.grace_time = options['grace_time'] if 'grace_time' in options else DEFAULT_GRACE_TIME
         self.jump_ahead = options['jump_ahead'] if 'jump_ahead' in options else DEFAULT_JUMP_AHEAD
         self.file_must_match = options['files_must_match'] if 'files_must_match' in options else False
+        self.network_delay = options['network_delay'] if 'network_delay' in options else 0.0
 
         # attributes
         self.socket = None
@@ -81,7 +82,7 @@ class Receiver:
             return
 
         # store received data
-        self.received_position = float(data[0])
+        self.received_position = data[0]
         self.received_filename = data[1]
 
         # calculate current deviation based on newly received maste position
@@ -118,7 +119,7 @@ class Receiver:
         try:
             # read incoming socket data
             pos, filename = self.socket.recv(1024).decode('utf-8').split('%', 1)
-            return (pos, filename)
+            return (float(pos)+self.network_delay, filename)
         except Exception as e:
             pass
 
