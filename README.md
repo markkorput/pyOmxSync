@@ -24,7 +24,7 @@ echo 0 | sudo tee /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
 ```python
 
 from omxplayer import OMXPlayer
-from omxsync.broadcaster import Broadcaster
+from omxsync import Broadcaster
 
 player = OMXPlayer('path/to/video.mp4')
 broadcaster = Broadcaster(player, {'verbose': True})
@@ -40,7 +40,7 @@ while player.playback_status() != "Stopped":
 ```python
 
 from omxplayer import OMXPlayer
-from omxsync.receiver import Receiver
+from omxsync import Receiver
 
 player = OMXPlayer('path/to/video.mp4')
 receiver = Receiver(player, {'verbose': True})
