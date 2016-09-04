@@ -11,12 +11,14 @@ A small python module that syncs omxplayers over the network using sockets and a
 
 First make sure willprice's [python-omxplayer-wrapper](https://github.com/willprice/python-omxplayer-wrapper) is installed. Go to [https://github.com/willprice/python-omxplayer-wrapper](https://github.com/willprice/python-omxplayer-wrapper) for instructions.
 
-There is no pip-installable package yet, so just copy this repo's pyOmxSync folder into your own project for now.
-
-
-On the slave you _might_ need to change your raspi's configuration to allow incoming broadcast messages:
+On the slave you _might_ need to change your raspi's configuration to allow incoming broadcast messages (by default syncing happens over a broadcast channel by default):
 ```shell
 echo 0 | sudo tee /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
+```
+
+Finally install the omxsync package
+```shell
+pip install omxsync
 ```
 
 ## Usage - master
