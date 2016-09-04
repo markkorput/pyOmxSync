@@ -19,6 +19,7 @@ class Receiver:
         self.tolerance = options['tolerance'] if 'tolerance' in options else DEFAULT_TOLERANCE
         self.grace_time = options['grace_time'] if 'grace_time' in options else DEFAULT_GRACE_TIME
         self.jump_ahead = options['jump_ahead'] if 'jump_ahead' in options else DEFAULT_JUMP_AHEAD
+        self.file_must_match = options['files_must_match'] if 'files_must_match' in options else False
 
         # attributes
         self.socket = None
@@ -86,7 +87,7 @@ class Receiver:
             print('PositionReceiver got: %s @ %.2f (deviation: %.2f)' % (self.received_filename, self.received_position, self.deviation))
 
         # check file; if master is playing a different file, then there is no use in time-syncing
-        if not os.path.basename(self.received_filename) == os.path.basename(self.player.get_filename()):
+        if self.file_must_match and not os.path.basename(self.received_filename) == os.path.basename(self.player.get_filename()):
             print('PositionReceiver got different file ('+os.path.basename(self.received_filename)+') from own current file: '+os.path.basename(self.player.get_filename()))
             # todo; try to load same file?
             return
