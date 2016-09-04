@@ -54,6 +54,9 @@ class Receiver:
         # keep receiving data so don't get whole batch of data later
         data = self._receive_data()
         local_pos = self.player.position()
+        if local_pos == None: # we'll need our own local position
+            return
+
         self.last_measure_time = time()
 
         # paused for master to catch-up?

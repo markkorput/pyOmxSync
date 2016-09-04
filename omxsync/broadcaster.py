@@ -50,12 +50,16 @@ class Broadcaster:
 
     def _broadcast_position(self):
         p = self.player.position()
+        filename = self.player.get_filename()
+
+        if not p and not filename:
+            return
 
         try:
-            self.socket.send(("%s%%%s" % (str(p),  self.player.get_filename())).encode('utf-8'))
+            self.socket.send(("%s%%%s" % (str(p),  filename)).encode('utf-8'))
         except socket.error as err:
             print("PositionBroadcaster: socket.send failed:")
             print(err)
 
         if self.verbose:
-            print('broadcast position: ' + str(p) + ', with filename: ' + self.player.get_filename())
+            print('broadcast position: ' + str(p) + ', with filename: ' + filename)
