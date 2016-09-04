@@ -30,6 +30,9 @@ class DummyPlayer:
         self.start_pos = pos
 
     def position(self):
+        if self.status == 'Stopped':
+            return None
+
         if not self.start_pos or not self.start_time:
             return 0.0
 
@@ -39,6 +42,8 @@ class DummyPlayer:
         return self.start_pos
 
     def get_filename(self):
+        if self.status == 'Stopped':
+            return None
         return self.path
 
     def play(self):
@@ -47,6 +52,9 @@ class DummyPlayer:
 
     def pause(self):
         self.status = 'Paused'
+
+    def stop(self):
+        self.status = 'Stopped'
 
     def playback_status(self):
         return self.status
