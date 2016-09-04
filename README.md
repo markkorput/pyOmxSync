@@ -59,7 +59,7 @@ Use a custom network port (the broadcaster and receiver must use the same port)
 
 ```python
 receiver = Receiver(player, {'port': 3001}) # default: 1666
-broadcaster = Broadcaster(player, {'port': '3001'}) # default: 1666
+broadcaster = Broadcaster(player, {'port': 3001}) # default: 1666
 ```
 
 Use specific remote IP-adresses (instead of broadcasting)
